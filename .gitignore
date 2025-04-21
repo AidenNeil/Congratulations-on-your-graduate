@@ -1,5 +1,19 @@
+# System Files
 .DS_Store
+Thumbs.db
+
+# IDE/Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Dependency directories
 node_modules/
+vendor/
+
+# Environment files
 .env
-*.log
-Thumbs.db 
+.env.local
+.env.*.local
+*.log 
