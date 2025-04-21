@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Congratulations!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      height: 100vh;
+      background: linear-gradient(#dd0a85, #000000);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .container {
+      text-align: center;
+      padding: 30px;
+      background: rgba(transparent);
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      z-index: 2;
+      max-width: 600px;
+    }
+
+    @keyframes rainbowText {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      font-family: 'special gothic expanded one';
+      font-size: 100px;
+      text-transform: uppercase;
+      text-align: center;
+      margin: 0;
+      color: transparent;
+      background: linear-gradient(270deg, #f70000, #f89200, #f8f501, #038f00, #0168f8, #a200f7);
+      background-size: 1000% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rainbowText 8s ease infinite;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-top: 10px;
+      color: #fff;
+    }
+
+    .button {
+      margin-top: 30px;
+      padding: 15px 30px;
+      background-color: #ff088c;
+      color: white;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #9f3f6d;
+    }
+
+    .flower {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      animation: float 10s infinite linear;
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0.6;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎓 Heyy Johanna</h1>
+    <p>Wishing you a future full of success, joy, and endless opportunities. 🌸</p>
+    <button class="button" onclick="startGame()">Open</button>
+  </div>
+
+  <script>
+    const images = [
+      'images/red-heart-shape-icon.png',
+      'images/light-star.png'
+    ];
+
+    for (let i = 0; i < 20; i++) {
+      const flower = document.createElement('div');
+      flower.className = 'flower';
+      flower.style.left = Math.random() * 100 + 'vw';
+      flower.style.top = Math.random() * 100 + 'vh';
+      flower.style.backgroundImage = `url('${images[Math.floor(Math.random() * images.length)]}')`;
+      flower.style.animationDuration = (Math.random() * 10 + 5) + 's';
+      flower.style.opacity = Math.random() * 0.5 + 0.5;
+      document.body.appendChild(flower);
+    }
+
+    function startGame() {
+      window.location.href = "game.html";
+    }
+  </script>
+</body>
+</html>
