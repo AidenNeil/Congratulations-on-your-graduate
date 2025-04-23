@@ -144,7 +144,6 @@
     const heartContainer = document.body;
     const cursor = document.getElementById("cursor");
 
-    // Add particle system
     function createParticle(isGold) {
       const particle = document.createElement('div');
       particle.className = `particle ${isGold ? 'particle-gold' : 'particle-black'}`;
@@ -153,21 +152,21 @@
       particle.style.height = size + 'px';
       particle.style.left = Math.random() * window.innerWidth + 'px';
       particle.style.top = Math.random() * window.innerHeight + 'px';
-      
+
       const angle = Math.random() * Math.PI * 2;
       const speed = Math.random() * 1 + 0.5;
       const vx = Math.cos(angle) * speed;
       const vy = Math.sin(angle) * speed;
-      
+
       document.body.appendChild(particle);
-      
+
       function updateParticle() {
         const currentLeft = parseFloat(particle.style.left);
         const currentTop = parseFloat(particle.style.top);
-        
+
         particle.style.left = (currentLeft + vx) + 'px';
         particle.style.top = (currentTop + vy) + 'px';
-        
+
         if (currentLeft < -size || currentLeft > window.innerWidth + size ||
             currentTop < -size || currentTop > window.innerHeight + size) {
           particle.remove();
@@ -175,13 +174,12 @@
           requestAnimationFrame(updateParticle);
         }
       }
-      
+
       requestAnimationFrame(updateParticle);
     }
 
-    // Spawn particles periodically
     setInterval(() => {
-      createParticle(Math.random() < 0.3); // 30% chance of gold particles
+      createParticle(Math.random() < 0.3);
     }, 200);
 
     function spawnHeart() {
@@ -194,19 +192,19 @@
 
       let y = -60;
       let x = parseFloat(heart.style.left);
-      const fallSpeed = Math.random() * 4 + 6; // Increased speed range: 6-10 pixels per frame
-      const wobbleSpeed = Math.random() * 1.5 - 0.75; // Reduced wobble speed for smoother movement
-      const wobbleAmount = Math.random() * 15 + 10; // Reduced wobble amount for smoother movement
+      const fallSpeed = Math.random() * 4 + 6;
+      const wobbleSpeed = Math.random() * 1.5 - 0.75;
+      const wobbleAmount = Math.random() * 15 + 10;
       const startTime = Date.now();
 
       const fallInterval = setInterval(() => {
         y += fallSpeed;
         const time = (Date.now() - startTime) / 1000;
         const wobble = Math.sin(time * wobbleSpeed) * wobbleAmount;
-        
+
         heart.style.top = y + 'px';
         heart.style.left = (x + wobble) + 'px';
-        heart.style.transform = `rotate(${Math.sin(time * wobbleSpeed) * 15}deg)`; // Added smooth rotation
+        heart.style.transform = `rotate(${Math.sin(time * wobbleSpeed) * 15}deg)`;
 
         if (y > window.innerHeight) {
           heart.remove();
@@ -228,7 +226,7 @@
             checkLevel();
           }
         }
-      }, 16.67); // Changed to 16.67ms (60 FPS) for smoother animation
+      }, 16.67);
     }
 
     function updateProgress() {
@@ -241,7 +239,7 @@
         const nextMsg = document.getElementById('next-level-msg');
         nextMsg.style.opacity = 1;
         let countdown = 3;
-        
+
         function updateCountdown() {
           nextMsg.textContent = countdown;
           if (countdown === 0) {
@@ -251,7 +249,7 @@
             setTimeout(updateCountdown, 1000);
           }
         }
-        
+
         updateCountdown();
       }
     }
@@ -268,8 +266,7 @@
       }, 100);
     });
 
-    // Start spawning hearts immediately when the page loads
-    setInterval(spawnHeart, 500); // Changed from 1000ms to 500ms
+    setInterval(spawnHeart, 500);
   </script>
 </body>
 </html>
